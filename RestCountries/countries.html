@@ -1,0 +1,131 @@
+<html>
+    <head>
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>   
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.0/axios.min.js" integrity="sha512-aoTNnqZcT8B4AmeCFmiSnDlc4Nj/KPaZyB5G7JnOnUEkdNpCZs1LCankiYi01sLTyWy+m2P+W4XM+BuQ3Q4/Dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <style>
+            .display{
+                display: flex;
+                flex-wrap: wrap;
+               padding-top: 10px;
+                
+                
+            }
+            .mainHeading{
+                margin: 5px;
+                text-align: center;
+                background-color: #000;
+                color: #fff;
+                padding: 5px;
+            }
+            .display2{
+                display: flex;
+                flex-direction: column;
+                overflow:auto;
+                align-items: center;
+                border: 2px solid red;
+                height: 350px;
+                width: 350px;
+                
+                margin:10px;
+                font-family:"arial";
+
+                
+            }
+            .display2:hover h1{
+                background-color: aquamarine;
+            }
+
+            
+            .display2 img{
+                width: 150px;
+                height: 150px;
+                margin-bottom: 15px;
+
+            }
+            .display2 h2{
+                text-transform: uppercase;
+            }
+            .display2 h3{
+                text-transform: uppercase;
+                margin: 5px;
+            }
+            .display2 ul li{
+                list-style: none;
+            }
+            .hi{
+                padding: 10px;
+                margin-top: 10px;
+                width: 20%
+            }
+
+        </style>
+    </head>
+    <body style="display:flex; flex-direction: column">
+        <script type="text/babel">
+            var country=[]
+            var srinath=[]
+            
+            function Countries(){
+                console.log("hi")
+                var[c,setc]=React.useState([])
+                React.useEffect(()=>{
+                    axios.get("https://restcountries.com/v3/all").then(res=>
+                    {   country=[...res.data]
+                        country.map(a=>{
+                        var b={countryname:a.population}
+                            srinath.push(b)
+                        })
+                        return setc([...res.data])})
+                
+                },[]) 
+            
+            var a=()=>{
+                var b=JSON.stringify(c)
+                
+                
+                {var g=country.filter(c=>{
+                    
+                    return JSON.stringify(Object.values(c)).includes(document.getElementById("inp").value)
+                })
+                setc([...g])
+                }
+            }      
+           
+            console.log(srinath)
+            return (<>
+            <h1 className='mainHeading'>ALL COUNTRIES</h1>
+
+                   <div style={{textAlign:"right"}}>
+                        <input onChange={a}id="inp" type="text" placeHolder='Search Country' className="hi"/>
+
+                    </div>
+                    
+                    
+                    <div className="display">
+                       
+                        {c.map(a=>    
+                       
+                        <div className="display2">
+                            
+                            
+                           <h1>{a.name.common}</h1>
+                           <img height="300px"width="300px"src={a.flags[0]}/>
+                           <h3>capital:{a.capital}</h3>
+                           <h3>population:{a.population}</h3>
+                           <ul>Borders: {typeof(a.borders)==="object"?a.borders.map(a=><li>{a}</li>):<li>none</li>}</ul>
+                        </div>)}
+                        
+
+                                    
+                    </div>
+
+                    
+                </>    
+                   )
+                }
+        ReactDOM.render(<Countries/>,document.body)
+        </script>
+    </body>
+    </html>
