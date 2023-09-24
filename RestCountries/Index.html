@@ -83,18 +83,21 @@
               
             
             var a=()=>{
-                var b=JSON.stringify(c)
                 
                 
                 {var g=country.filter(c=>{
+                    return c.name.common.startsWith(document.getElementById("inp").value)
                     
-                    return JSON.stringify(Object.values(c)).includes(document.getElementById("inp").value)
+                    
                 })
-                setc([...g,"hi"])
+                setc([...g])
+                console.log(g)
+                console.log(  document.getElementById("inp").value)
+                
                 }
             }      
            
-            console.log(srinath)
+            
             return (<>
             <h1 className='mainHeading'>ALL COUNTRIES</h1>
 
