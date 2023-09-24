@@ -93,9 +93,10 @@
         var [details,setdetails]=React.useState(c)
         
 
- var del=(i)=>{
+ function del(i){
     var newdetails=[...details]
     newdetails.splice(i,1)
+    console.log(i)
     if(newdetails.length===0)
     {
         setdetails([...newdetails])
@@ -131,18 +132,18 @@ var a=()=>{
             {
                 details.map((a,i)=>
                 {
-                    return <div className="container2">
+                    return <div className="container2" id={i}>
                         <img src={a.img} alt={a.sub}/>
                         <footer>
                         <div style={{display:"flex",
                                     justifyContent:"space-between"}}>
-                        <h4>{a.sub}</h4>
+                        <h4>{a.sub}{i}</h4>
                         <h4 style={{margin:"20px",
                                     backgroundColor:"lightblue",
                                     color:"blue",
                                     borderRadius:"5px"}}>${a.price}</h4></div>
                         <p>{a.description}</p>
-                        <button onClick={del}>Not intrested</button>
+                        <button onClick={()=>del(i)}>Not intrested</button>
                         </footer>
                         </div>
                 })
