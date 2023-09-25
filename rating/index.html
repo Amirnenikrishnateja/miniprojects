@@ -1,0 +1,57 @@
+<html>
+
+<head>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+</head>
+
+<body>
+    <div id="d1"></div> 
+<script type="text/babel">
+    var A = function () {
+        var[b,setb]=React.useState("")
+        var s=document.getElementsByClassName("bi")
+        console.log(s.length)
+        
+        const a=(e)=>{
+        for(var i=0;i<s.length;i++)
+        {
+        s[i].id=i
+        s[i].classList.remove("bi-star-fill")
+        s[i].classList.add("bi-star")
+        }
+        for(var g=0;g<=e.target.id;g++)
+        {
+            
+        s[g].classList.remove("bi-star")
+        s[g].classList.add("bi-star-fill")
+        
+        }
+        setb(g)
+        
+        }
+        
+        
+       
+        return (
+            <div>
+                <h2> Rating:</h2>
+                <h2> {b}/5</h2>
+                <span><i class="bi bi-star" onClick={a}></i></span>
+                <span><i class="bi bi-star" onClick={a}></i></span>
+                <span><i class="bi bi-star" onClick={a}></i></span>
+                <span><i class="bi bi-star" onClick={a}></i></span>
+                <span><i class="bi bi-star" onClick={a}></i></span>
+            </div>
+               
+           
+        )
+    }
+    ReactDOM.render(<A />, document.getElementById('d1'));
+</script>
+</body>
+
+</html>
