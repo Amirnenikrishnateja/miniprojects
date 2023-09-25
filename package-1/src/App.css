@@ -1,0 +1,26 @@
+.App{
+  text-align: center;
+}
+.mainbox0{
+  display:flex;
+  
+  justify-content: center;
+  margin: 0px;
+  
+}
+.box1,.box2,.box3{
+
+  
+  width: 150px;
+  height: 250px;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:center;
+
+}
+.box1 img{
+  width:75%;
+  height: 75%;
+}
